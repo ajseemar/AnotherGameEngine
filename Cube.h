@@ -5,7 +5,7 @@
 #include <memory>
 #include "Common/DeviceResources.h"
 #include "VertexBuffer.h"
-#include "ShaderCommon.h"
+#include "IndexBuffer.h"
 
 namespace AnotherGameEngine 
 {
@@ -22,6 +22,10 @@ namespace AnotherGameEngine
 		void Render();
 
 	private:
+		struct VERTEX {
+			float x, y, z;
+		};
+
 		struct CBUFFER {
 			DirectX::XMMATRIX model, view, projection;
 		};
@@ -29,8 +33,9 @@ namespace AnotherGameEngine
 		std::shared_ptr<DX::DeviceResources> m_deviceResources;
 
 		std::unique_ptr<VertexBuffer> m_vertexBuffer;
+		std::unique_ptr<IndexBuffer> m_indexBuffer;
 		//Microsoft::WRL::ComPtr<ID3D11Buffer> m_vertexBuffer;
-		Microsoft::WRL::ComPtr<ID3D11Buffer> m_indexBuffer;
+		//Microsoft::WRL::ComPtr<ID3D11Buffer> m_indexBuffer;
 		Microsoft::WRL::ComPtr<ID3D11InputLayout> m_inputLayout;
 
 		Microsoft::WRL::ComPtr<ID3D11Buffer> m_constantBuffer;

@@ -52,6 +52,9 @@
     <ClCompile Include="VertexBuffer.cpp">
       <Filter>Bindables</Filter>
     </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Bindables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnotherGameEngineMain.h" />
@@ -63,7 +66,9 @@
     <ClInclude Include="Bindable.h">
       <Filter>Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderCommon.h" />
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Bindables</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">

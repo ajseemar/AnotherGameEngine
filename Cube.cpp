@@ -52,6 +52,9 @@ void Cube::CreateDeviceDependentResources()
 
 		};
 
+		m_vertexBuffer = std::make_unique<VertexBuffer>(m_deviceResources, vertices);
+		bindables.push_back(m_vertexBuffer.get());
+
 		//D3D11_BUFFER_DESC vbd = { 0 };
 		//vbd.ByteWidth = sizeof(VERTEX) * ARRAYSIZE(vertices);
 		//vbd.BindFlags = D3D11_BIND_VERTEX_BUFFER;;
@@ -61,23 +64,23 @@ void Cube::CreateDeviceDependentResources()
 		//vd.pSysMem = &vertices;
 
 		//m_deviceResources->GetD3DDevice()->CreateBuffer(&vbd, &vd, &m_vertexBuffer);
-		m_vertexBuffer = std::make_unique<VertexBuffer>(m_deviceResources, vertices);
-		bindables.push_back(m_vertexBuffer.get());
 
 
-		UINT indices[] = {
+		std::vector<UINT> indices = {
 			6u, 7u, 4u, 5u, 1u, 7u, 3u, 6u, 2u, 4u, 0u, 1u, 2u, 3u
 		};
 
-		D3D11_BUFFER_DESC ibd = { 0 };
-		ibd.ByteWidth = sizeof(UINT) * ARRAYSIZE(indices);
-		ibd.BindFlags = D3D11_BIND_INDEX_BUFFER;;
-		ibd.StructureByteStride = sizeof(UINT);
+		m_indexBuffer = std::make_unique<IndexBuffer>(m_deviceResources, indices);
+		bindables.push_back(m_indexBuffer.get());
+		//D3D11_BUFFER_DESC ibd = { 0 };
+		//ibd.ByteWidth = sizeof(UINT) * ARRAYSIZE(indices);
+		//ibd.BindFlags = D3D11_BIND_INDEX_BUFFER;;
+		//ibd.StructureByteStride = sizeof(UINT);
 
-		D3D11_SUBRESOURCE_DATA id = { 0 };
-		id.pSysMem = &indices;
+		//D3D11_SUBRESOURCE_DATA id = { 0 };
+		//id.pSysMem = &indices;
 
-		m_deviceResources->GetD3DDevice()->CreateBuffer(&ibd, &id, &m_indexBuffer);
+		//m_deviceResources->GetD3DDevice()->CreateBuffer(&ibd, &id, &m_indexBuffer);
 
 		D3D11_BUFFER_DESC cbd = { 0 };
 		cbd.ByteWidth = sizeof(CBUFFER);
@@ -143,7 +146,7 @@ void Cube::Render()
 
 	context->IASetInputLayout(m_inputLayout.Get());
 	//context->IASetVertexBuffers(0, 1, m_vertexBuffer.GetAddressOf(), &strides, &offsets);
-	context->IASetIndexBuffer(m_indexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0u);
+	//context->IASetIndexBuffer(m_indexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0u);
 	context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 	context->UpdateSubresource(m_constantBuffer.Get(), 0u, nullptr, &m_cb, 0u, 0u);
