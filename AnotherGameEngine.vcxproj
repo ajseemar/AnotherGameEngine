@@ -253,6 +253,7 @@
     <ClInclude Include="App.xaml.h">
       <DependentUpon>App.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="Bindable.h" />
     <ClInclude Include="Common\DeviceResources.h" />
     <ClInclude Include="AnotherGameEngineMain.h" />
     <ClInclude Include="Cube.h" />
@@ -262,6 +263,8 @@
     <ClInclude Include="Common\DirectXHelper.h" />
     <ClInclude Include="Common\StepTimer.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="ShaderCommon.h" />
+    <ClInclude Include="VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.xaml.cpp">
@@ -283,6 +286,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

@@ -32,7 +32,7 @@ void Cube::CreateDeviceDependentResources()
 	auto createMeshTask = (createVSTask && createPSTask).then([this]() {
 		const float size = 1.f;
 
-		VERTEX vertices[] = {
+		std::vector<VERTEX> vertices = {
 
 			// TOP
 
@@ -52,16 +52,17 @@ void Cube::CreateDeviceDependentResources()
 
 		};
 
-		D3D11_BUFFER_DESC vbd = { 0 };
-		vbd.ByteWidth = sizeof(VERTEX) * ARRAYSIZE(vertices);
-		vbd.BindFlags = D3D11_BIND_VERTEX_BUFFER;;
-		vbd.StructureByteStride = sizeof(VERTEX);
+		//D3D11_BUFFER_DESC vbd = { 0 };
+		//vbd.ByteWidth = sizeof(VERTEX) * ARRAYSIZE(vertices);
+		//vbd.BindFlags = D3D11_BIND_VERTEX_BUFFER;;
+		//vbd.StructureByteStride = sizeof(VERTEX);
 
-		D3D11_SUBRESOURCE_DATA vd = { 0 };
-		vd.pSysMem = &vertices;
+		//D3D11_SUBRESOURCE_DATA vd = { 0 };
+		//vd.pSysMem = &vertices;
 
-		m_deviceResources->GetD3DDevice()->CreateBuffer(&vbd, &vd, &m_vertexBuffer);
-
+		//m_deviceResources->GetD3DDevice()->CreateBuffer(&vbd, &vd, &m_vertexBuffer);
+		m_vertexBuffer = std::make_unique<VertexBuffer>(m_deviceResources, vertices);
+		bindables.push_back(m_vertexBuffer.get());
 
 
 		UINT indices[] = {
@@ -135,8 +136,13 @@ void Cube::Render()
 
 	auto context = m_deviceResources->GetD3DDeviceContext();
 
+	for (auto b : bindables)
+	{
+		b->Bind(m_deviceResources);
+	}
+
 	context->IASetInputLayout(m_inputLayout.Get());
-	context->IASetVertexBuffers(0, 1, m_vertexBuffer.GetAddressOf(), &strides, &offsets);
+	//context->IASetVertexBuffers(0, 1, m_vertexBuffer.GetAddressOf(), &strides, &offsets);
 	context->IASetIndexBuffer(m_indexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0u);
 	context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 

@@ -38,6 +38,9 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
+    <Filter Include="Bindables">
+      <UniqueIdentifier>{7b49abd9-e4e1-4cb9-afdd-d03feeb739b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -46,11 +49,21 @@
     <ClCompile Include="AnotherGameEngineMain.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Bindables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnotherGameEngineMain.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Cube.h" />
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="Bindable.h">
+      <Filter>Bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderCommon.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">
