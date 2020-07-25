@@ -146,6 +146,6 @@ void Cube::Render()
 
 	context->PSSetShader(m_pixelShader.Get(), nullptr, 0u);
 
-	context->DrawIndexed(6, 0u, 0);
+	context->DrawIndexed(14, 0u, 0);
 }
 
