@@ -45,10 +45,12 @@
   <ItemGroup>
     <ClCompile Include="AnotherGameEngineMain.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Cube.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnotherGameEngineMain.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Cube.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">
@@ -60,5 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="DirectXPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="VertexShader.hlsl" />
+    <FxCompile Include="PixelShader.hlsl" />
   </ItemGroup>
 </Project>

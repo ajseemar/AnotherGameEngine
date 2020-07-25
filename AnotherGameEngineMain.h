@@ -2,6 +2,7 @@
 
 #include "Common\StepTimer.h"
 #include "Common\DeviceResources.h"
+#include "Cube.h"
 
 // Renders Direct2D and 3D content on the screen.
 namespace AnotherGameEngine
@@ -29,6 +30,7 @@ namespace AnotherGameEngine
 		std::shared_ptr<DX::DeviceResources> m_deviceResources;
 
 		// TODO: Replace with your own content renderers.
+		std::unique_ptr<Cube> cube;
 
 		Windows::Foundation::IAsyncAction^ m_renderLoopWorker;
 		Concurrency::critical_section m_criticalSection;

@@ -15,6 +15,7 @@ AnotherGameEngineMain::AnotherGameEngineMain(const std::shared_ptr<DX::DeviceRes
 	m_deviceResources->RegisterDeviceNotify(this);
 
 	// TODO: Replace this with your app's content initialization.
+	cube = std::make_unique<Cube>(deviceResources);
 
 	// TODO: Change the timer settings if you want something other than the default variable timestep mode.
 	// e.g. for 60 FPS fixed timestep update logic, call:
@@ -34,6 +35,7 @@ AnotherGameEngineMain::~AnotherGameEngineMain()
 void AnotherGameEngineMain::CreateWindowSizeDependentResources() 
 {
 	// TODO: Replace this with the size-dependent initialization of your app's content.
+	cube->CreateWindowSizeDependentResources();
 }
 
 void AnotherGameEngineMain::StartRenderLoop()
@@ -77,6 +79,7 @@ void AnotherGameEngineMain::Update()
 	m_timer.Tick([&]()
 	{
 		// TODO: Replace this with your app's content update functions.
+		cube->Update();
 	});
 }
 
@@ -112,6 +115,7 @@ bool AnotherGameEngineMain::Render()
 
 	// Render the scene objects.
 	// TODO: Replace this with your app's content rendering functions.
+	cube->Render();
 
 	return true;
 }
